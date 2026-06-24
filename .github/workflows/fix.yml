@@ -1,0 +1,9 @@
+on: workflow_dispatch
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python fix.py
+      - run: git config user.email "ci@ci" && git config user.name "CI"
+      - run: git add . && git commit -m "fix time_epoch_ms" && git push
